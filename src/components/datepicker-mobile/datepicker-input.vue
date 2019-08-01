@@ -1,6 +1,6 @@
 <template>
 	<article id="datepicker-input" class="clearfix" @click="show">
-		<input type="text" readonly="readonly" class="picker-input" :value="value" @input="$emit('input', $event.target.value)" :title="value"/>
+		<input type="text" readonly="readonly" class="picker-input" :value="value" @input="$emit('input', $event.target.value)"/>
 		<div class="picker-image-box">
 			<img src="./date-picture.png" class="picker-image" >
 		</div>
