@@ -106,7 +106,7 @@
 		return -1;
 	}
 	export default{
-		name:"datepickerMobile",
+		name:"DatepickerMobile",
 		data(){
 			return{
 				value:getNowFormatDate(),//初始值

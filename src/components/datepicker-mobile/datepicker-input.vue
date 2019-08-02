@@ -1,15 +1,17 @@
 <template>
 	<article id="datepicker-input" class="clearfix" @click="show">
-		<input type="text" readonly="readonly" class="picker-input" :value="value" @input="$emit('input', $event.target.value)"/>
-		<div class="picker-image-box">
-			<img src="./date-picture.png" class="picker-image" >
-		</div>
+		<slot>
+			<input type="text" readonly="readonly" class="picker-input" :value="value" @input="$emit('input', $event.target.value)"/>
+			<div class="picker-image-box">
+				<img src="./date-picture.png" class="picker-image" >
+			</div>
+		</slot>
 	</article>
 </template>
 
 <script>
 	export default{
-		name:"datepickerInput",
+		name:"DatepickerInput",
 		props:['value'],
 		methods:{
 			show:function(){
@@ -32,7 +34,7 @@
 
 <style scoped>
 	#datepicker-input{
-		width:100%;max-width:200px;height:30px;border:solid 1px #eee;border-radius:5px;display:inline-block;
+		width:100%;height:100%;display:inline-block;
 	}
 	#datepicker-input:active{
 		background-color: #ECECEC !important;
@@ -44,6 +46,6 @@
 		width:20%;height:100%;float:left;background-color: #eee;position: relative;text-align: center;
 	}
 	.picker-image{
-		height:80%;position: relative;
+		height:100%;position: relative;
 	}
 </style>

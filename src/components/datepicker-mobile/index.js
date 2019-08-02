@@ -1,5 +1,5 @@
-import datepickerMobile from './datepicker-mobile.vue'
-import datepickerInput from './datepicker-input.vue'
+import DatepickerMobile from './datepicker-mobile.vue'
+import DatepickerInput from './datepicker-input.vue'
 
 export default {
 	install:function(Vue,options){
@@ -20,13 +20,12 @@ export default {
 			}
 		})
 		window.DATEPICKER_MOBILE_BUS = DATEPICKER_MOBILE_BUS
-		Vue.component("datepicker-mobile",datepickerMobile);
-//		Vue.component("datepicker-input",datepickerInput);
+		Vue.component("datepicker-mobile",DatepickerMobile);
 		Vue.directive("mdatapicker",{
 			"bind":function(el,binding,vNode,oldVnode){
 				var judy = new Vue({
 					render(createElement){
-						return createElement(datepickerInput,{
+						return createElement(DatepickerInput,{
 							attrs: {
 							    value: vNode.context[binding.expression]
 							},
@@ -38,12 +37,20 @@ export default {
 									vNode.context[binding.expression]=event;
 								}
 							},
+							// domProps: {
+							// 	innerHTML: 'baz'
+							// },
+							scopedSlots: {
+								default: props => vNode.children
+							},
 						});
 					}
-		       	});
+				   });
+				   console.log(vNode.children);
 				var vm = judy.$mount();
+				el.innerHTML = "";
 				el.appendChild(vm.$el);
 			}
 		})		
-	}
+	},
 }
