@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <demo />
+    <datepicker-mobile />
   </div>
 </template>
 

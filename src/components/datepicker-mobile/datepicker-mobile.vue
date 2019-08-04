@@ -1,8 +1,8 @@
 <template>
-	<article id="datepicker-mobile" >
-		<div class="datepicker-mobile-cover" v-if="datepicker.isShow" @click="cancel"></div>
+	<article id="datepicker-mobile">
+		<div class="datepicker-mobile-cover" v-if="datepicker.isShow" @click="cancel" @touchmove.prevent></div>
 		<transition name="datepicker">
-			<div class="datepicker-mobile-box" v-show="datepicker.isShow">
+			<div class="datepicker-mobile-box" v-show="datepicker.isShow" @touchmove.prevent>
 				<div class="header">
 					<a class="btn-cancel" @click="cancel">取消</a>
 					<span class="choose-txt">请选择时间</span>
@@ -336,7 +336,7 @@
 	@media only screen and (orientation:landscape) {
 		.datepicker-mobile-cover,
 		.datepicker-mobile-box{
-			max-width:40pc; margin-left:auto;margin-right:auto;
+			max-width:40vw;left:30vw;
 		}
 	}
 	.datepicker-mobile-cover{

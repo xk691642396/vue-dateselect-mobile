@@ -31,7 +31,7 @@ article,aside,blockquote,body,button,code,dd,div,dl,dt,fieldset,figcaption,figur
   .icon-back:before { content: "\e6b6"; }
   .icon-ok:before { content: "\e6ee"; }
   .layer-bg{
-	display: table;
+	  display: table;
     font-family: Helvetica,arial,sans-serif;
     position: fixed;
     left: 0;
