@@ -24,15 +24,16 @@ export default {
 		Vue.component("DatepickerInput",DatepickerInput);
 		Vue.directive("mdatapicker",{
 			"bind":function(el,binding,vNode,oldVnode){
+				var node = vNode.children;
 				vNode.context.$nextTick(() => {
 					var vm = new Vue({
 						render(createElement){
-							// console.log(createElement('input',{
-							// 	domProps:{
-							// 		value:vNode.context[binding.expression]
-							// 	}
-							// }))
-							console.log(vNode);
+							console.log(createElement('input',{
+								domProps:{
+									value:vNode.context[binding.expression]
+								}
+							}))
+							console.log(node);
 							return createElement(DatepickerInput,{
 								attrs: {
 									value: vNode.context[binding.expression]
@@ -43,7 +44,11 @@ export default {
 									}
 								},
 								scopedSlots: {
-									default: props => vNode.children
+									default: props => createElement('input',{
+											domProps:{
+												value:vNode.context[binding.expression]
+											}
+										})
 								},
 							});
 						},
