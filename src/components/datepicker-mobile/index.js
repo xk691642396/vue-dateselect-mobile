@@ -20,36 +20,38 @@ export default {
 			}
 		})
 		window.DATEPICKER_MOBILE_BUS = DATEPICKER_MOBILE_BUS
-		Vue.component("datepicker-mobile",DatepickerMobile);
+		Vue.component("DatepickerMobile",DatepickerMobile);
+		Vue.component("DatepickerInput",DatepickerInput);
 		Vue.directive("mdatapicker",{
 			"bind":function(el,binding,vNode,oldVnode){
-				var judy = new Vue({
-					render(createElement){
-						return createElement(DatepickerInput,{
-							attrs: {
-							    value: vNode.context[binding.expression]
-							},
-							on:{
-								"input":function(event){
-									vNode.context[binding.expression]=event;
+				vNode.context.$nextTick(() => {
+					var vm = new Vue({
+						render(createElement){
+							// console.log(createElement('input',{
+							// 	domProps:{
+							// 		value:vNode.context[binding.expression]
+							// 	}
+							// }))
+							console.log(vNode);
+							return createElement(DatepickerInput,{
+								attrs: {
+									value: vNode.context[binding.expression]
 								},
-								"change-value":function(event){
-									vNode.context[binding.expression]=event;
-								}
-							},
-							// domProps: {
-							// 	innerHTML: 'baz'
-							// },
-							scopedSlots: {
-								default: props => vNode.children
-							},
-						});
-					}
-				   });
-				   console.log(vNode.children);
-				var vm = judy.$mount();
-				el.innerHTML = "";
-				el.appendChild(vm.$el);
+								on:{
+									"change-value": function(event){
+										vNode.context[binding.expression]=event;
+									}
+								},
+								scopedSlots: {
+									default: props => vNode.children
+								},
+							});
+						},
+					});
+					el.innerHTML = "";
+					vm.$mount(el)
+					// el.appendChild(vm.$mount().$el);
+				})
 			}
 		})		
 	},
