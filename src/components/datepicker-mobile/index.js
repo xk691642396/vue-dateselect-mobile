@@ -25,39 +25,27 @@ export default {
 		Vue.directive("mdatapicker",{
 			"bind":function(el,binding,vNode,oldVnode){
 				var node = vNode.children;
-				vNode.context.$nextTick(() => {
-					var vm = new Vue({
-						render(createElement){
-							console.log(vNode);
-							console.log(createElement('input',{
-								domProps:{
-									value:vNode.context[binding.expression]
+				var vm = new Vue({
+					render(createElement){
+						console.log(vNode);
+						return createElement(DatepickerInput,{
+							attrs: {
+								value: vNode.context[binding.expression]
+							},
+							on:{
+								"change-value": function(event){
+									vNode.context[binding.expression]=event;
+									console.log(event);
 								}
-							}))
-							console.log(createElement('div',vNode.children));
-							return createElement(DatepickerInput,{
-								attrs: {
-									value: vNode.context[binding.expression]
-								},
-								on:{
-									"change-value": function(event){
-										vNode.context[binding.expression]=event;
-									}
-								},
-								scopedSlots: {
-									default: props => createElement('input',{
-											domProps:{
-												value:vNode.context[binding.expression]
-											}
-										})
-								},
-							});
-						},
-					});
-					el.innerHTML = "";
-					vm.$mount(el)
-					// el.appendChild(vm.$mount().$el);
-				})
+							},
+							scopedSlots: {
+								default: props => node
+							},
+						});
+					},
+				});
+				el.innerHTML = "";
+				el.appendChild(vm.$mount().$el);
 			}
 		})		
 	},
