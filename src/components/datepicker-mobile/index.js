@@ -27,12 +27,13 @@ export default {
 				vNode.context.$nextTick(() => {
 					var vm = new Vue({
 						render(createElement){
-							// console.log(createElement('input',{
-							// 	domProps:{
-							// 		value:vNode.context[binding.expression]
-							// 	}
-							// }))
 							console.log(vNode);
+							console.log(createElement('input',{
+								domProps:{
+									value:vNode.context[binding.expression]
+								}
+							}))
+							console.log(createElement('div',vNode.children));
 							return createElement(DatepickerInput,{
 								attrs: {
 									value: vNode.context[binding.expression]
