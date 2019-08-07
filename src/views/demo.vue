@@ -18,8 +18,8 @@
               </div>
               <input type="text" placeholder="请输入验证码" v-model="verifyCode" @blur="veryfyVerifyCode" :class="(!verifyCodeYz&&blurArr[3])?'border-red':''" />
               <input type="text" placeholder="邮箱" v-model="FEmail" @blur="veryfyEmial" :class="((!FEmailVerify||FEmailIsExist)&&blurArr[4])?'border-red':''" />
-              <!-- <datepicker-input @change-value="changeVal"><input type="text" readonly="readonly" :value="birthDay" class="birthDay" /></datepicker-input> -->
-              <div v-mdatapicker="birthDay"></div>
+              <datepicker-input @change-value="changeVal" :today="false"><input type="text" readonly="readonly" :value="birthDay" class="birthDay" /></datepicker-input>
+              <div v-mdatapicker="birthDay2"><input placeholder="请选择生日" type="text" readonly="readonly" :value="birthDay2" class="birthDay" /></div>
               <input type="password" placeholder="密码：6-30位数字和字母组合" v-model="FPassWord" @blur="veryfyPwd" :class="(!FPassWordVerify&&blurArr[5])?'border-red':''" />
               <div class="remind-area">{{remindText}}</div>
               <!--<a class="reg-btn" :class="(FMobileVerify&&FEmailVerify&&FPassWordVerify&&FCompany.trim().length>0&&FNickName.trim().length>0&&verifyCode.trim().length>0)?'':'disabled'">注册</a>-->
@@ -48,6 +48,7 @@ export default {
       verifyCode:"",
       FEmail:"",
       birthDay:"1994-12-09",
+      birthDay2:"",
       FPassWord:"",
       remindText:"",//提醒框输出内容
       verifyCodeTime:120,//再次获取验证码时间
@@ -213,7 +214,7 @@ export default {
         this.FPassWordVerify=true;
       }
     },
-    birthDay(val,oldVal){
+    birthDay2(val){
       console.log(val);
     }
   }

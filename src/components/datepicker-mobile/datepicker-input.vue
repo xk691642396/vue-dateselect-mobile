@@ -10,9 +10,26 @@
 </template>
 
 <script>
+	import {
+		getNowFormatDate,
+		formatDate
+	} from './format-date.js'
 	export default{
 		name:"DatepickerInput",
-		props:['value'],
+		props:{
+			value:String,
+			today:{
+				type:Boolean,
+				default:false
+			}
+		},
+		mounted(){
+			const _this = this;
+			var regExp = /\d{4}-(0[1-9]|1[0-2])-([0-2][0-9]|3[0-1])/g;
+			if(!regExp.test(_this.value)&&_this.today){
+				_this.$emit('change-value',formatDate(getNowFormatDate(),"yyyy-MM-dd"));
+			}
+		},
 		methods:{
 			show:function(){
 				var datepicker=this.datepicker;

@@ -22,30 +22,35 @@ export default {
 		window.DATEPICKER_MOBILE_BUS = DATEPICKER_MOBILE_BUS
 		Vue.component("DatepickerMobile",DatepickerMobile);
 		Vue.component("DatepickerInput",DatepickerInput);
+		var node = new Object();
 		Vue.directive("mdatapicker",{
 			"bind":function(el,binding,vNode,oldVnode){
-				var node = vNode.children;
+				node = vNode.children;
 				var vm = new Vue({
 					render(createElement){
-						console.log(vNode);
 						return createElement(DatepickerInput,{
 							attrs: {
-								value: vNode.context[binding.expression]
+								value: vNode.context[binding.expression],
+								today:Boolean(binding.modifiers.today)
 							},
 							on:{
 								"change-value": function(event){
-									vNode.context[binding.expression]=event;
-									console.log(event);
+									vNode.context[binding.expression] = event;
 								}
 							},
 							scopedSlots: {
-								default: props => node
-							},
+								default: props =>  node
+							}
 						});
 					},
 				});
-				el.innerHTML = "";
-				el.appendChild(vm.$mount().$el);
+				vm.$nextTick(()=>{
+					el.innerHTML = "";
+					vm.$mount(el);
+				})
+			},
+			"update":function(el,binding,vNode,oldVnode){
+				node = vNode.children;
 			}
 		})		
 	},
