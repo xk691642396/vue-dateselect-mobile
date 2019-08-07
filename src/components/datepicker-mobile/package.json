@@ -1,0 +1,25 @@
+{
+  "name": "vue-datepicker-mobile",
+  "version": "1.0.0",
+  "description": "移动端Vue.js日期选择组件 | Mobile Vue.js date selection component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xk691642396/datepicker-mobile.git"
+  },
+  "keywords": [
+    "vue",
+    "mobile",
+    "date",
+    "picker"
+  ],
+  "author": "xiong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xk691642396/datepicker-mobile/issues"
+  },
+  "homepage": "https://github.com/xk691642396/datepicker-mobile#readme"
+}

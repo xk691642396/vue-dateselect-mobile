@@ -34,7 +34,7 @@ export default {
 								today:Boolean(binding.modifiers.today)
 							},
 							on:{
-								"change-value": function(event){
+								"input": function(event){
 									vNode.context[binding.expression] = event;
 								}
 							},

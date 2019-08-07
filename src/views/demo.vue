@@ -18,7 +18,7 @@
               </div>
               <input type="text" placeholder="请输入验证码" v-model="verifyCode" @blur="veryfyVerifyCode" :class="(!verifyCodeYz&&blurArr[3])?'border-red':''" />
               <input type="text" placeholder="邮箱" v-model="FEmail" @blur="veryfyEmial" :class="((!FEmailVerify||FEmailIsExist)&&blurArr[4])?'border-red':''" />
-              <datepicker-input @change-value="changeVal" :value="birthDay" :today="false"><input type="text" readonly="readonly" :value="birthDay" class="birthDay" /></datepicker-input>
+              <datepicker-input v-model="birthDay" :today="false"><input type="text" readonly="readonly" :value="birthDay" class="birthDay" /></datepicker-input>
               <div v-mdatapicker="birthDay2"><input placeholder="请选择生日" type="text" readonly="readonly" :value="birthDay2" class="birthDay" /></div>
               <input type="password" placeholder="密码：6-30位数字和字母组合" v-model="FPassWord" @blur="veryfyPwd" :class="(!FPassWordVerify&&blurArr[5])?'border-red':''" />
               <div class="remind-area">{{remindText}}</div>
@@ -63,9 +63,6 @@ export default {
     }
   },
   methods:{
-    changeVal(val){
-      this.birthDay = val
-    },
     updataRemindTxt(val){
       if(!val){
         this.remindText="";
@@ -213,9 +210,6 @@ export default {
       }else{
         this.FPassWordVerify=true;
       }
-    },
-    birthDay2(val){
-      console.log(val);
     }
   }
 }

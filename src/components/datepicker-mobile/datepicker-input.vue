@@ -26,7 +26,6 @@
 		mounted(){
 			const _this = this;
 			var regExp = /\d{4}-(0[1-9]|1[0-2])-([0-2][0-9]|3[0-1])/g;
-			console.log(_this.value);
 			if(!regExp.test(_this.value)&&_this.today){
 				_this.$emit('change-value',formatDate(getNowFormatDate(),"yyyy-MM-dd"));
 			}
@@ -38,7 +37,7 @@
 				datepicker.$emit("mShow",this.value);
 				datepicker.show();
 				datepicker.$on("confirm",(val)=>{
-					this.$emit('change-value',val);
+					this.$emit('input',val);
 				})
 			}
 		},
