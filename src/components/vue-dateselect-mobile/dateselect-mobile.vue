@@ -1,14 +1,14 @@
 <template>
-	<article id="datepicker-mobile">
-		<div class="datepicker-mobile-cover" v-if="datepicker.isShow" @click="cancel" @touchmove.prevent></div>
-		<transition name="datepicker">
-			<div class="datepicker-mobile-box" v-show="datepicker.isShow" @touchmove.prevent>
+	<article id="dateselect-mobile">
+		<div class="dateselect-mobile-cover" v-if="dateselect.isShow" @click="cancel" @touchmove.prevent></div>
+		<transition name="dateselect">
+			<div class="dateselect-mobile-box" v-show="dateselect.isShow" @touchmove.prevent>
 				<div class="header">
 					<a class="btn-cancel" @click="cancel">取消</a>
 					<span class="choose-txt">请选择时间</span>
 					<a class="btn-confirm" @click="confirm">确认</a>
 				</div>
-				<div class="datepicker-box clearfix">
+				<div class="dateselect-box clearfix">
 					<div class="unit-box clearfix">
 						<div class="unit">
 							年
@@ -57,7 +57,7 @@
 		formatDate
 	} from './format-date.js'
 	export default{
-		name:"DatepickerMobile",
+		name:"DateselectMobile",
 		data(){
 			return{
 				value:getNowFormatDate(),//初始值
@@ -110,8 +110,8 @@
 		methods:{
 			onShow(){
 				var _this=this;
-				_this.datepicker.$off("show");
-				_this.datepicker.$on('mShow',(val)=>{
+				_this.dateselect.$off("show");
+				_this.dateselect.$on('mShow',(val)=>{
 					_this.duration=0;
 					if(isNaN(val)&&!isNaN(Date.parse(val))){
 					　　_this.value=val;
@@ -126,12 +126,12 @@
 				})
 			},
 			cancel:function(){
-				this.datepicker.hide();
+				this.dateselect.hide();
 				this.onShow();
 			},
 			confirm:function(){
-				this.datepicker.$emit("confirm",this.yearSelect+"-"+this.monthSelect+"-"+this.dateSelect);
-				this.datepicker.hide();
+				this.dateselect.$emit("confirm",this.yearSelect+"-"+this.monthSelect+"-"+this.dateSelect);
+				this.dateselect.hide();
 				this.onShow();
 			},
 			initYearMonth:function(){
@@ -255,8 +255,8 @@
 			}
 		},
 		computed:{
-			datepicker(){
-				return window.DATEPICKER_MOBILE_BUS;
+			dateselect(){
+				return window.DATESELECT_MOBILE_BUS;
 			}
 		},
 		watch:{
@@ -285,15 +285,15 @@
 
 <style scoped>
 	@media only screen and (orientation:landscape) {
-		.datepicker-mobile-cover,
-		.datepicker-mobile-box{
+		.dateselect-mobile-cover,
+		.dateselect-mobile-box{
 			max-width:40vw;left:30vw;
 		}
 	}
-	.datepicker-mobile-cover{
+	.dateselect-mobile-cover{
 		width: 100vh;height: 100vh;background-color:rgba(0,0,0,.5) ;position:fixed;top:0;z-index: 2017;
 	}
-	.datepicker-mobile-box{
+	.dateselect-mobile-box{
 		width:100vw;height:200px;position:fixed;bottom:0;z-index: 2018;padding: 10px;background-color: #fff;border-top: solid 1px #ccc;
 	}
 	.header{
@@ -311,7 +311,7 @@
 	.btn-confirm:active{
 		background-color: #ECECEC;
 	}
-	.datepicker-box{
+	.dateselect-box{
 		width:100%;height:calc(100% - 30px);position:relative;font-size: 16px;
 	}
 	.unit-box{
@@ -320,9 +320,9 @@
 	.unit{
 		width:calc(100% / 3);float:left;text-align: right;line-height:50px;font-weight: bold;
 	}
-	.datepicker-box .year,
-	.datepicker-box .month,
-	.datepicker-box .date{
+	.dateselect-box .year,
+	.dateselect-box .month,
+	.dateselect-box .date{
 		width:calc(100% / 3);float: left;overflow-y:hidden ;height: 100%;position:relative;
 	}
 	.tooth{
@@ -343,16 +343,16 @@
 	.bottom-mask{
 		
 	}
-	.datepicker-enter,
-	.datepicker-leave-to{
+	.dateselect-enter,
+	.dateselect-leave-to{
 		transform: translateY(100%);opacity: 0;
 	}
-	.datepicker-enter-to,
-	.datepicker-leave{
+	.dateselect-enter-to,
+	.dateselect-leave{
 		transform: translateY(-1%);;opacity: 1;
 	}
-	.datepicker-enter-active,
-	.datepicker-leave-active{
+	.dateselect-enter-active,
+	.dateselect-leave-active{
 		transition:all .5s;transform-origin: bottom;
 	}
 </style>

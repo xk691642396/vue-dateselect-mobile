@@ -1,5 +1,5 @@
 {
-  "name": "datepicker-mobile",
+  "name": "vue-dateselect-mobile",
   "version": "1.0.0",
   "description": "移动端Vue.js日期选择组件 | Mobile Vue.js date selection component",
   "main": "index.js",
@@ -14,7 +14,8 @@
     "vue",
     "mobile",
     "date",
-    "picker"
+    "select",
+    "dateselect"
   ],
   "author": "xiong",
   "license": "ISC",
