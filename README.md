@@ -1,5 +1,8 @@
 # vue-datese-mobile
 vue移动端日期选择组件（年-月-日）
+## 效果图
+![demo](https://github.com/xk691642396/vue-dateselect-mobile/tree/master/src/assets/image/demo.jpg)
+
 # 安装
 ## npm install --save vue-picture-preview
 # 使用
