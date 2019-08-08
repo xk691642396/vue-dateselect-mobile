@@ -9,21 +9,20 @@ Vue.use(DateSelect)
 
 ## 在根组件添加
 
-<!-- Vue root compoment template -->
-<div id="app">
-    <router-view />
-    <dateselect-mobile />
-</div>
+\<div id="app"\>
+    \<router-view \/\>
+    \<dateselect-mobile \/\>
+\<\/div\>
 
 ## 在组件中使用
 
 ### 自定义指令方法
 
-<div v-mdateselect.today="birthDay"><input placeholder="请选择生日" type="text" readonly="readonly" :value="birthDay"/></div><br/>
+\<div v-mdateselect.today="birthDay"\>\<input placeholder="请选择生日" type="text" readonly="readonly" :value="birthDay"\/\>\<\/div\><br/>
 
 修饰符.today表示当birthDay没有默认值时，自动把birthDay变量置为今天
 
 ### 组件方法
-<dateselect-input v-model="birthDay" :today="false"><input type="text" readonly="readonly" :value="birthDay" class="birthDay" /></dateselect-input><br/>
+\<dateselect-input v-model="birthDay" :today="false"\>\<input type="text" readonly="readonly" :value="birthDay" class="birthDay" \/\>\<\/dateselect-input\><br/>
 
 若today传入true且当birthDay没有默认值时，自动把birthDay变量置为今天
