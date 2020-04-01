@@ -8,7 +8,7 @@ function resolve (dir) {
   return path.join(__dirname, dir);
 }
 module.exports = {
-    //baseUrl: './',
+    //baseUrl: './',ttt
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     devServer: {
         port: 8080, // 端口号
